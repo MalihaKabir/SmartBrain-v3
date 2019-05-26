@@ -1,6 +1,6 @@
 # SmartBrain-v3
 
-This **SmartBrain App** is a face recognition app. This is the third version of **[SmartBrain-Frontend](https://github.com/MalihaKabir/SmartBrain-FrontEndPart)** to connect it with nodejs api.
+This **SmartBrain App** is a face recognition app. This is the third version of **[SmartBrain-Frontend](https://github.com/MalihaKabir/SmartBrain-FrontEndPart)** to connect it with databse.
 
 ### To run this project:
 
