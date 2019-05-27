@@ -19,4 +19,4 @@ This **SmartBrain App** is a face recognition app. This is the third version of 
 
 ### Screenshot of Registration Page:
 ![screencapture-localhost-3000-2019-04-30-01_55_06](https://user-images.githubusercontent.com/43598622/56959054-fce53d80-6b6d-11e9-8822-13f48d8429ad.jpg)
->>>>>> 87aa3df31f6b0f0e6258aef2d59f8d3abe52c514
+
