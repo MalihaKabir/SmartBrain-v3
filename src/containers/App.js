@@ -97,7 +97,7 @@ class App extends Component {
 						.then((response) => response.json())
 						.then((count) => this.setState(Object.assign(this.state.user, { entries: count })))
 						.catch(console.log); // to log out any errors we have.
-					// Always use '.catch()' after using '.then()' to make sure that we don't have Errors that happen without us knowing. This is the best way to practice Error Handling.
+					// It's important to have '.catch()' every time you do 'fetch()' something to make sure that we don't have Errors that happen without us knowing. This is the best way to practice Error Handling.
 				}
 				this.displayDetectedFaceBox(this.calculateFaceLocation(response));
 			})
