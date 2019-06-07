@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Particles from 'react-particles-js';
+import Clarifai from 'clarifai';
 import Navigation from '../components/Navigation/Navigation';
 import Logo from '../components/Logo/Logo';
 import Rank from '../components/Rank/Rank';
@@ -9,13 +10,18 @@ import SignIn from '../components/SignIn/SignIn';
 import Register from '../components/Register/Register';
 import './App.css';
 
+// You MUST get your own API from clarifai. See README.md file for details.
+const app = new Clarifai.App({
+	apiKey: 'Your_Own_API_KEY'
+});
+
 const particlesOptions = {
 	particles: {
 		number: {
-			value: 100,
+			value: 90,
 			density: {
 				enable: true,
-				value_area: 850
+				value_area: 800
 			}
 		}
 	}
@@ -78,19 +84,11 @@ class App extends Component {
 
 	onPictureSubmit = () => {
 		this.setState({ imgURL: this.state.input });
-		// fetch('http://localhost:3001/imageurl', {
-		fetch('https://secret-dawn-40359.herokuapp.com/imageurl', {
-			method: 'post',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({
-				input: this.state.input
-			})
-		})
-			.then((response) => response.json())
+		app.models
+			.predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
 			.then((response) => {
 				if (response) {
-					// fetch('http://localhost:3001/image', {
-					fetch('https://secret-dawn-40359.herokuapp.com:3001/image', {
+					fetch('http://localhost:3001/image', {
 						method: 'put',
 						headers: { 'Content-Type': 'application/json' },
 						body: JSON.stringify({
@@ -100,7 +98,7 @@ class App extends Component {
 						.then((response) => response.json())
 						.then((count) => this.setState(Object.assign(this.state.user, { entries: count })))
 						.catch(console.log); // to log out any errors we have.
-					// It's important to have '.catch()' every time you do 'fetch()' something to make sure that we don't have Errors that happen without us knowing. This is the best way to practice Error Handling.
+					// Always use '.catch()' after using '.then()' to make sure that we don't have Errors that happen without us knowing. This is the best way to practice Error Handling.
 				}
 				this.displayDetectedFaceBox(this.calculateFaceLocation(response));
 			})
@@ -109,7 +107,10 @@ class App extends Component {
 
 	onRouteChange = (route) => {
 		if (route === 'signout') {
-			this.setState(initialState);
+			// change:
+			// this.setState({ isSignedIn: false });
+			// to:
+			this.setState(initialState); // for initialState
 		} else if (route === 'home') {
 			this.setState({ isSignedIn: true });
 		}
@@ -125,6 +126,9 @@ class App extends Component {
 				{route === 'home' ? (
 					<div>
 						<Logo />
+						{/* Change: */}
+						{/* <Rank /> */}
+						{/* To: */}
 						<Rank name={this.state.user.name} entries={this.state.user.entries} />
 						<ImageLinkForm onInputChange={this.onInputChange} onPictureSubmit={this.onPictureSubmit} />
 						<FaceRecognition box={box} imgURL={imgURL} />

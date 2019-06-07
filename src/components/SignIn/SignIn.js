@@ -18,8 +18,8 @@ class SignIn extends React.Component {
 	};
 
 	onSubmitSignIn = () => {
-		// fetch('http://localhost:3001/signin', {
-		fetch('https://secret-dawn-40359.herokuapp.com/signin', {
+		// console.log(this.state);
+		fetch('http://localhost:3001/signin', {
 			method: 'post',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
@@ -28,9 +28,9 @@ class SignIn extends React.Component {
 			})
 		})
 			.then((response) => response.json())
-			.then((data) => {
-				if (data.id) {
-					this.props.loadUser(data);
+			.then((user) => {
+				if (user.id) {
+					this.props.loadUser(user);
 					this.props.onRouteChange('home');
 				}
 			});
@@ -39,6 +39,7 @@ class SignIn extends React.Component {
 	render() {
 		const { onRouteChange } = this.props;
 		return (
+			// <article className="center br2 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw5 center">
 			<article className="center br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
 				<main className="pa4 black-80">
 					<div className="measure">

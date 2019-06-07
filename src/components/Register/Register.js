@@ -24,8 +24,8 @@ class Register extends React.Component {
 	};
 
 	onRegistration = () => {
-		// fetch('http://localhost:3001/register', {
-		fetch('https://secret-dawn-40359.herokuapp.com/register', {
+		// console.log(this.state);
+		fetch('http://localhost:3001/register', {
 			method: 'post',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
@@ -36,7 +36,7 @@ class Register extends React.Component {
 		})
 			.then((response) => response.json())
 			.then((user) => {
-				if (user.id) {
+				if (user) {
 					this.props.loadUser(user);
 					this.props.onRouteChange('home');
 				}
@@ -44,6 +44,7 @@ class Register extends React.Component {
 	};
 
 	render() {
+		// const { onRouteChange } = this.props;
 		return (
 			<article className="center br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
 				<main className="pa4 black-80">
@@ -62,6 +63,31 @@ class Register extends React.Component {
 									id="name"
 								/>
 							</div>
+							{/* Create common form for these two divs: */}
+							{/* <div className="mt3">
+								<label className="db fw6 lh-copy f6" htmlFor="email-address">
+									Email
+								</label>
+								<input
+									onChange={this.onEmailChange}
+									className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+									type="email"
+									name="email-address"
+									id="email-address"
+								/>
+							</div>
+							<div className="mv3">
+								<label className="db fw6 lh-copy f6" htmlFor="password">
+									Password
+								</label>
+								<input
+									onChange={this.onPasswordChange}
+									className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+									type="password"
+									name="password"
+									id="password"
+								/>
+							</div> */}
 							<CommonForm onEmailChange={this.onEmailChange} onPasswordChange={this.onPasswordChange} />
 						</fieldset>
 						<div className="">
