@@ -1,8 +1,5 @@
 import React from 'react';
 
-// Change:
-// const Rank = () => {
-// To:
 const Rank = ({ name, entries }) => {
 	return (
 		<div>
