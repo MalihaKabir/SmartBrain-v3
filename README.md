@@ -1,6 +1,6 @@
 # SmartBrain-v3
 
-This **SmartBrain App** is a face recognition app. This is the third version of **[SmartBrain-Frontend](https://github.com/MalihaKabir/SmartBrain-FrontEndPart)** to connect it with databse. You can click **[here](https://github.com/MalihaKabir/SmartBrain-v2)** to check the second version of it.
+This **[SmartBrain App](https://smart-brain-app-detect-face.herokuapp.com)** is a face recognition app. This is the third version of **[SmartBrain-Frontend](https://github.com/MalihaKabir/SmartBrain-FrontEndPart)** to connect it with databse. You can click **[here](https://github.com/MalihaKabir/SmartBrain-v2)** to check the second version of it.
 
 ### To run this project:
 
